@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Nagi\MailRifle\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MailRifleCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'mail-rifle';
 
     public $description = 'My command';
 
