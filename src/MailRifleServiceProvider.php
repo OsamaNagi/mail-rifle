@@ -2,9 +2,9 @@
 
 namespace Nagi\MailRifle;
 
+use Nagi\MailRifle\Commands\MailRifleCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Nagi\MailRifle\Commands\MailRifleCommand;
 
 class MailRifleServiceProvider extends PackageServiceProvider
 {
