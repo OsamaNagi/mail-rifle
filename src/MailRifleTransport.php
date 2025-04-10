@@ -11,6 +11,10 @@ class MailRifleTransport extends AbstractTransport
     {
         $email = $message->getOriginalMessage();
 
+        if (! $email instanceof \Symfony\Component\Mime\Email) {
+            throw new \InvalidArgumentException('The original message must be an instance of Symfony\Component\Mime\Email.');
+        }
+
         $subject = $email->getSubject();
         $from = collect($email->getFrom())->map->toString()->implode("\n");
         $to = collect($email->getTo())->map->toString()->implode("\n");
