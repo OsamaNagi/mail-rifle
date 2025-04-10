@@ -2,24 +2,21 @@
 
 namespace Nagi\MailRifle;
 
+use Illuminate\Support\ServiceProvider;
 use Nagi\MailRifle\Commands\MailRifleCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class MailRifleServiceProvider extends PackageServiceProvider
+class MailRifleServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
-    {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('mail-rifle')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_mail_rifle_table')
-            ->hasCommand(MailRifleCommand::class);
-    }
+   public function boot()
+   {
+        config(
+            'mail.mailers.mailrifle' => [
+                'transport' => 'mailrifle',
+            ]
+        );
+
+        app(MailRifle::class)->extend('mailrifle', function ($app) {
+            return new MailRifleTransport();
+        });
+   }
 }

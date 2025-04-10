@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('mail_rifle_table', function (Blueprint $table) {
+        Schema::create('mail_rifle', function (Blueprint $table) {
             $table->id();
 
             $table->text('from')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mail_rifle_table');
+        Schema::dropIfExists('mail_rifle');
     }
 };
